@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "voyageone.fullname" . }}
+data:
+{{- range $key, $value := .Values.environmentVars }}
+  {{ $key }}: {{ $value }}
+{{- end }}

@@ -27,14 +27,14 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
+          command:
+            - "/bin/sh"
+          args:
+            - "-c"
+            - "sleep 600"
+          envFrom:
+            - configMapRef:
+                name: {{ include "voyageone.fullname" . }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

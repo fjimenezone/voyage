@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: nginx
-  tag: stable
+  repository: busybox
+  tag: "1"
   pullPolicy: IfNotPresent
 
 nameOverride: ""
@@ -46,3 +46,10 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+environmentVars:
+  GROOT: I am groot
+  PETER: I know
+  GAMORA: Do I look fat in this green?
+  ROCKET: What's in it for me?
+  DRAX: I am the destroyer
