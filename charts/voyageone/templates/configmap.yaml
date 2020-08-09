@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: {{ include "voyageone.fullname" . }}
 data:
-{{- range $key, $value := .Values.environmentVars }}
-  {{ $key }}: {{ $value }}
-{{- end }}
+{{- range $path, $_ :=  .Files.Glob  "conf/*.yaml" }}
+{{ $.Files.Get $path | trimSuffix "\n" | indent 2 }}
+{{- end -}}
